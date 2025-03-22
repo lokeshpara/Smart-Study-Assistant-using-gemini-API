@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Word Explainer - Powered by Gemini</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Use local Mermaid.js for concept map visualization -->
+  <script src="mermaid.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Word Explainer</h1>
+    <div class="tab-navigation">
+      <button class="tab-btn active" data-tab="explain-word">Explain Word</button>
+      <button class="tab-btn" data-tab="summarize-page">Summarize Page</button>
+      <button class="tab-btn" data-tab="study-notes">Study Notes</button>
+      <button class="tab-btn" data-tab="concept-map">Concept Map</button>
+      <button class="tab-btn" data-tab="quiz">Quiz</button>
+    </div>
+
+    <!-- Explain Word Tab -->
+    <div class="tab-content active" id="explain-word-tab">
+      <div class="input-group">
+        <input type="text" id="text-input" placeholder="Enter a word or phrase to explain">
+        <button id="explain-btn">Explain</button>
+      </div>
+      <div id="loader" class="hidden">
+        <div class="spinner"></div>
+        <p>Generating explanation...</p>
+      </div>
+      <div id="error-container" class="hidden">
+        <p id="error-message"></p>
+      </div>
+      <div id="results-container" class="hidden">
+        <div id="text-explanation"></div>
+        <h2>Related Images</h2>
+        <div id="image-explanation" class="image-grid"></div>
+        <h2>Related Video</h2>
+        <div id="video-container">
+          <div id="video-title"></div>
+          <div id="video-player"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summarize Page Tab -->
+    <div class="tab-content" id="summarize-page-tab">
+      <div class="action-container">
+        <button id="summarize-btn">Summarize Current Page</button>
+        <div class="download-container">
+          <button id="download-summary" class="download-btn" disabled>Download Summary</button>
+        </div>
+      </div>
+      <div id="summary-loader" class="hidden">
+        <div class="spinner"></div>
+        <p>Generating summary...</p>
+      </div>
+      <div id="summary-error" class="hidden">
+        <p id="summary-error-message"></p>
+      </div>
+      <div id="summary-container" class="hidden">
+        <h2>Page Summary</h2>
+        <div id="page-summary"></div>
+        <h2>Key Points</h2>
+        <div id="key-points"></div>
+      </div>
+    </div>
+
+    <!-- Study Notes Tab -->
+    <div class="tab-content" id="study-notes-tab">
+      <div class="input-group">
+        <input type="text" id="notes-input" placeholder="Enter topic or specific focus for study notes">
+      </div>
+      <div class="action-container">
+        <div class="input-source-options">
+          <button id="analyze-page-btn" class="analyze-btn">Analyze Current Page</button>
+          <span id="page-analyze-status" class="status-indicator">Page not analyzed</span>
+        </div>
+        <button id="generate-notes-btn">Generate Study Notes</button>
+        <div class="download-container">
+          <button id="download-notes" class="download-btn" disabled>Download Notes</button>
+        </div>
+      </div>
+      <div id="notes-loader" class="hidden">
+        <div class="spinner"></div>
+        <p>Generating study notes...</p>
+      </div>
+      <div id="notes-error" class="hidden">
+        <p id="notes-error-message"></p>
+      </div>
+      <div id="notes-container" class="hidden">
+        <h2>Study Notes</h2>
+        <div id="study-notes-content"></div>
+      </div>
+    </div>
+
+    <!-- Concept Map Tab -->
+    <div class="tab-content" id="concept-map-tab">
+      <div class="input-group">
+        <input type="text" id="map-input" placeholder="Enter topic or specific focus for concept map">
+      </div>
+      <div class="action-container">
+        <div class="input-source-options">
+          <button id="analyze-page-for-map-btn" class="analyze-btn">Analyze Current Page</button>
+          <span id="map-page-analyze-status" class="status-indicator">Page not analyzed</span>
+        </div>
+        <button id="generate-map-btn">Generate Concept Map</button>
+        <div class="download-container">
+          <button id="download-map" class="download-btn" disabled>Download Map</button>
+        </div>
+      </div>
+      <div id="map-loader" class="hidden">
+        <div class="spinner"></div>
+        <p>Generating concept map...</p>
+      </div>
+      <div id="map-error" class="hidden">
+        <p id="map-error-message"></p>
+      </div>
+      <div id="map-success" class="hidden">
+        <p>Concept map generated successfully! You can download it using the button above.</p>
+      </div>
+    </div>
+
+    <!-- Quiz Tab -->
+    <div class="tab-content" id="quiz-tab">
+      <div class="input-group">
+        <input type="text" id="quiz-input" placeholder="Enter topic or specific focus for quiz">
+      </div>
+      <div class="action-container">
+        <div class="input-source-options">
+          <button id="analyze-page-for-quiz-btn" class="analyze-btn">Analyze Current Page</button>
+          <span id="quiz-page-analyze-status" class="status-indicator">Page not analyzed</span>
+        </div>
+        <button id="generate-quiz-btn">Generate Quiz</button>
+        <div class="download-container">
+          <button id="download-quiz" class="download-btn" disabled>Download Quiz</button>
+        </div>
+      </div>
+      <div id="quiz-loader" class="hidden">
+        <div class="spinner"></div>
+        <p>Generating quiz questions...</p>
+      </div>
+      <div id="quiz-error" class="hidden">
+        <p id="quiz-error-message"></p>
+      </div>
+      <div id="quiz-container" class="hidden">
+        <h2>Quiz Questions</h2>
+        <div id="quiz-content"></div>
+        <div id="quiz-results" class="hidden">
+          <h3>Quiz Results</h3>
+          <p id="quiz-score"></p>
+        </div>
+        <button id="check-answers-btn" class="hidden">Check Answers</button>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 

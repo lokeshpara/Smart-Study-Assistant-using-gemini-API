@@ -1,0 +1,79 @@
+## Session 2: Modern Language Model Internals - Study Notes
+
+**I. Foundation Part II Review:**
+
+* **Neural Networks (NNs):** Universal Approximators capable of solving any problem, trained using backpropagation.
+* **Backpropagation:**  Training algorithm for NNs, utilizes a "learning rate" to adjust weights for improved performance.
+* **Challenges with Text (pre-2016):**
+    * Ineffective for long sentences.
+    * Different models for different tasks (translation, summarization, etc.).
+    * Larger models didn't guarantee better performance.
+    * Lack of large annotated datasets.
+
+**II. Convolutional Neural Networks (CNNs) - Key Concepts:**
+
+* **Location Knowledge:** CNNs maintain spatial information through localized data processing.
+* **Channels:** Process data in separate channels, allowing for concept segregation (e.g., RGB in images).
+* **Skip Connections (ResNet):** Enable deeper models by allowing backpropagation feedback to bypass layers, facilitating training.
+
+**III. Transformer Models:**
+
+* **Modern Decoder Architecture:**  Simplified compared to earlier encoder-decoder models.  Resource: [External Link Provided in Original Content]
+* **Input Data Types:** Text, images, audio, video, time-series data, DNA, code – all represented as sequences.
+* **Embeddings:**  Represent input data in a multi-dimensional vector format, allowing for complex and compact representations.  Dimensions are learned, not predefined.
+* **Positional Encoding:** Tags input sequence elements with their position, crucial for context understanding.
+* **Attention Mechanism:** Core of transformer models.
+    * Contextualizes word meanings based on surrounding words (e.g., "bank" in different contexts).
+    * Focuses on relevant parts of the sequence for specific tasks (e.g., identifying "Dhoni" as the "tiger").
+* **Multi-Head Attention:** Processes embeddings in smaller, parallel chunks for efficiency and contextuality.
+* **Add & Norm:** Addition combines information, normalization keeps values within a desired range.
+* **Feed Forward:** Combines dissected embeddings to mix context.
+* **Linear, Softmax, Output Probabilities:** Final layers that produce predictions as probabilities.
+
+**IV. Tokenization:**
+
+* **Definition:** Breaking down text into smaller units (tokens) for processing by LLMs.
+* **Advantages over Characters/Words:**  Balances vocabulary size and processing steps.
+* **Key Role in LLMs:** Enables handling of diverse languages and text structures.
+* **Tiktoken Example:** Demonstrates tokenization behavior and language-specific differences.
+* **Resource:** Andrej Karpathy video [External Link Provided in Original Content]
+
+**V. Large Language Models (LLMs):**
+
+* **Core Function:** Predict the next token in a sequence.
+* **Context Length:** All previous tokens are considered for each prediction, crucial for agentic AI and context management.
+* **Input vs. Output Tokens:**  LLMs can process vast input but generate limited output due to computational costs of decoding.
+* **Defining Characteristics:**
+    * Billions of parameters.
+    * Understand, generate, and manipulate language.
+    * Based on machine learning.
+
+**VI. Pretraining Objectives:**
+
+* **Casual Language Modeling (CLM):** Next token prediction using vast amounts of text data.
+* **Masking:** Used during training but not inference.
+
+**VII. Scaling Laws:**
+
+* **Key Principle:** Larger models trained on more data yield better results.
+* **Predictive Power:** Allows for performance estimation based on model size and compute.
+* **Chinchilla Scaling Law:**  Provides a formula for optimal data size given model size.
+* **Practical Implications:** Enables cost-effective experimentation with smaller models before scaling up.
+
+**VIII. Fine-Tuning:**
+
+* **Purpose:** Adapts pre-trained LLMs to specific tasks and improves output quality.
+* **Supervised Fine-Tuning (SFT):** Trains the model on high-quality instruction-response pairs.
+* **SFT Datasets:** OpenAssistant Conversations, Dolly 2.0, Anthropic’s HH-RLHF, FLAN Collection, InstructGPT.
+* **Compute Requirements:** SFT represents a small fraction (~2%) of the total compute compared to pre-training.
+
+**IX. Key Takeaways:**
+
+* Transformer architecture with attention is the foundation of modern LLMs.
+* Tokenization is crucial for efficient text processing.
+* LLMs predict the next token, considering all previous tokens.
+* Scaling laws guide model development and resource allocation.
+* Fine-tuning adapts pre-trained models to specific tasks and improves performance.
+
+
+This structured outline provides a comprehensive overview of the session's content,

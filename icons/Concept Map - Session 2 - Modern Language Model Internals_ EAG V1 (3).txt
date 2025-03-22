@@ -1,0 +1,123 @@
+graph TD
+A[Session 2 - Modern Language Model Internals]
+  --> B[Foundation Part II]
+  B[Foundation Part II]
+  --> C[Neural Networks]
+  C[Neural Networks]
+  --> D[Universal Approximators]
+  C[Neural Networks]
+  --> E[Backpropagation]
+  E[Backpropagation]
+  --> F[Learning Rate]
+  B[Foundation Part II]
+  --> G[Challenges in Text Processing (2016)]
+  G[Challenges in Text Processing (2016)]
+  --> H[Long Sentences]
+  G[Challenges in Text Processing (2016)]
+  --> I[Different Models for Different Problems]
+  G[Challenges in Text Processing (2016)]
+  --> J[Model Size vs Performance]
+  G[Challenges in Text Processing (2016)]
+  --> K[Lack of Annotated Datasets]
+  B[Foundation Part II]
+  --> L[Convolutional Neural Networks (CNNs)]
+  L[Convolutional Neural Networks (CNNs)]
+  --> M[Location Knowledge]
+  L[Convolutional Neural Networks (CNNs)]
+  --> N[Channels]
+  L[Convolutional Neural Networks (CNNs)]
+  --> O[Skip Connections]
+  O[Skip Connections]
+  --> P[ResNet]
+  B[Foundation Part II]
+  --> Q[Transformer Model]
+  Q[Transformer Model]
+  --> R[Encoder]
+  Q[Transformer Model]
+  --> S[Decoder]
+  S[Decoder]
+  --> T[Modern Decoder Architecture]
+  Q[Transformer Model]
+  --> U[Input Types]
+  U[Input Types]
+  --> V[Text]
+  U[Input Types]
+  --> W[Image]
+  U[Input Types]
+  --> X[Audio]
+  U[Input Types]
+  --> Y[Video]
+  U[Input Types]
+  --> Z[Time-Series Data]
+  U[Input Types]
+  --> A[A]A[
+  DNA]
+  U[Input Types]
+  --> A[A]B[
+  Code]
+  Q[Transformer Model]
+  --> A[A]C[
+  Embeddings]
+  Q[Transformer Model]
+  --> A[A]D[
+  Position Encoding]
+  Q[Transformer Model]
+  --> A[A]E[
+  Attention Mechanism]
+  AE[Attention Mechanism]
+  --> A[A]F[
+  Multi-head Attention]
+  Q[Transformer Model]
+  --> A[A]G[
+  Add & Norm]
+  Q[Transformer Model]
+  --> A[A]H[
+  Feed Forward]
+  Q[Transformer Model]
+  --> A[A]I[
+  Linear Layer]
+  Q[Transformer Model]
+  --> A[A]J[
+  Softmax]
+  Q[Transformer Model]
+  --> A[A]K[
+  Output Probabilities]
+  B[Foundation Part II]
+  --> A[A]L[
+  Tokens]
+  AL[Tokens]
+  --> A[A]M[
+  Tokenization]
+  B[Foundation Part II]
+  --> A[A]N[
+  LLMs/GenAI]
+  AN[LLMs/GenAI]
+  --> A[A]O[
+  Next Token Prediction]
+  AN[LLMs/GenAI]
+  --> A[A]P[
+  Input vs Output Tokens]
+  B[Foundation Part II]
+  --> A[A]Q[
+  Pretraining Objectives]
+  AQ[Pretraining Objectives]
+  --> A[A]R[
+  Casual Language Modeling (CLM)]
+  B[Foundation Part II]
+  --> A[A]S[
+  Scaling Laws]
+  AS[Scaling Laws]
+  --> A[A]T[
+  Chinchilla Scaling Law]
+  B[Foundation Part II]
+  --> A[A]U[
+  Fine Tuning]
+  AU[Fine Tuning]
+  --> A[A]V[
+  Supervised Fine Tuning (SFT)]
+  AU[Fine Tuning]
+  --> A[A]W[
+  SFT Datasets]
+  B[Foundation Part II]
+  --> A[A]X[
+  Assignment]

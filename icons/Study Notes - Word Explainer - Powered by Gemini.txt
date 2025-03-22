@@ -1,0 +1,59 @@
+## Softmax Function: Study Notes
+
+**1. Main Concepts and Definitions:**
+
+The softmax function is a mathematical function that transforms a vector of arbitrary real numbers into a probability distribution.  It's widely used in machine learning, particularly in multi-class classification problems, as the final layer of a neural network.  It "squashes" the input vector's values into a range between 0 and 1, and ensures that they sum up to 1, thus representing probabilities.
+
+**2. Key Points and Explanations:**
+
+* **Purpose:**  The primary purpose of the softmax function is to convert raw output scores (logits) from a neural network into probabilities. These probabilities represent the likelihood of each class being the correct one.
+
+* **Formula:**  Given an input vector *x* of length *K*, the softmax function is defined as:
+
+   softmax(x<sub>i</sub>) = exp(x<sub>i</sub>) / Σ<sub>j=1</sub><sup>K</sup> exp(x<sub>j</sub>)
+
+   where:
+    * x<sub>i</sub> is the i-th element of the input vector *x*.
+    * exp() is the exponential function.
+    * The denominator is the sum of the exponentials of all elements in *x*.
+
+* **Properties:**
+    * **Output Range:** The output of the softmax function is always between 0 and 1 for each element.
+    * **Sum to One:** The sum of all elements in the output vector is always 1.
+    * **Monotonically Increasing:**  Increasing the input value x<sub>i</sub> will always increase the corresponding output softmax(x<sub>i</sub>).
+    * **Invariant to Constant Offset:** Adding a constant value to all elements of the input vector does not change the output probabilities. This is because the constant cancels out in the numerator and denominator.  This property is useful for numerical stability.
+
+**3. Examples:**
+
+* **Example 1:** Let's say the output of a neural network for a three-class classification problem is [2, 1, -1]. Applying the softmax function:
+
+    * softmax(2) = exp(2) / (exp(2) + exp(1) + exp(-1)) ≈ 0.659
+    * softmax(1) = exp(1) / (exp(2) + exp(1) + exp(-1)) ≈ 0.242
+    * softmax(-1) = exp(-1) / (exp(2) + exp(1) + exp(-1)) ≈ 0.099
+
+    The resulting probability distribution is approximately [0.659, 0.242, 0.099]. The class corresponding to the highest probability (0.659) would be predicted.
+
+* **Example 2 (Numerical Stability):** Consider large input values like [1000, 1001, 1002].  Directly applying the softmax formula can lead to numerical overflow (exponentials of large numbers become very large). Subtracting the maximum value (1002) from each element before applying softmax helps avoid this issue and doesn't change the output probabilities:
+
+    * Modified input: [-2, -1, 0]
+    * Applying softmax to the modified input yields stable and correct probabilities.
+
+**4. Important Relationships between Concepts:**
+
+* **Softmax vs. Sigmoid:** While both functions can output values between 0 and 1, they are used in different contexts. Sigmoid is typically used for binary classification, outputting the probability of a single class. Softmax is used for multi-class classification, outputting a probability distribution over multiple classes.
+
+* **Softmax and Cross-Entropy Loss:** Softmax is often used in conjunction with the cross-entropy loss function. Cross-entropy measures the difference between the predicted probability distribution (output of softmax) and the true distribution (one-hot encoded labels).
+
+* **Softmax and Temperature:**  A temperature parameter (T) can be introduced to the softmax function:
+
+    softmax(x<sub>i</sub>) = exp(x<sub>i</sub>/T) / Σ<sub>j=1</sub><sup>K</sup> exp(x<sub>j</sub>/T)
+
+    Higher temperatures make the probabilities more uniform (closer to each other), while lower temperatures make the distribution more peaked around the largest input value.
+
+
+**5. Summary of Main Takeaways:**
+
+* Softmax converts logits into probabilities for multi-class classification.
+* Output values are between 0 and 1, summing to 1.
+* It's crucial for interpreting neural network outputs as class probabilities.
+* Numerical stability can be improved by subtracting the maximum input value.
